@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div123{
+            width:150px;
+            height:40px;
+            background-color: blue;
+            font-size:xx-large;
+            animation-name: myAnimation;
+            position: relative;
+            animation-duration: 8s;
+            animation-delay: 2s;
+            animation-iteration-count:infinite;
+            animation-direction: alternate;
+            animation-timing-function: linear;
+
+        }
+        .m{
+        margin-top:60px;
+      }
+        @keyframes myAnimation{
+            0%{ background-color: blue; left: 0%; top: 0%;}
+            33.33%{background-color: green;left:25%;top: 0%;}
+            66.66%{background-color: darkmagenta;left: 50%;top:0%;}
+            100%{background-color: red;left:100%;top:0%;}
+             0% {
+        transform: translateX(0) rotate(0deg);
+        border-radius: 0%;       /* square */
+        background-color: #3498db;
+      }
+      50% {
+        transform: translateX(200px) rotate(180deg);
+        border-radius: 50%;      /* circle */
+        background-color: #e74c3c;
+      }
+      100% {
+        transform: translateX(0) rotate(360deg);
+        border-radius: 0%;       /* back to square */
+        background-color: #3498db;
+      }
+      
+        }
+    </style>
+</head>
+<body>
+    <div id="div123"  class="m"><b style=color:yellow>InkOribit</b></div>
+</body>
+</html>

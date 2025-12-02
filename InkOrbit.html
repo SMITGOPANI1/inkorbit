@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkOrbit</title>
+    <style>
+        /* *{
+            background-color: burlywood;
+        } */
+        .div3{
+            text-align: center;
+            background-color:white;
+            display: flex;
+            flex-wrap: wrap;
+            gap:50px;
+            padding-left: 10%;
+            padding-right: 10% ;
+            justify-content: center;
+        }
+        .div3:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 9px 18px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 50px;
+            text-align: center;
+        }
+        #div123{
+            width:150px;
+            height:40px;
+            background-color: blue;
+            font-size:xx-large;
+            animation-name: myAnimation;
+            position: relative;
+            animation-duration: 8s;
+            animation-delay: 2s;
+            animation-iteration-count:infinite;
+            animation-direction: alternate;
+            animation-timing-function: linear;
+        }
+        .m{
+        margin-top:60px;
+        margin-bottom: 40px;
+      }
+        @keyframes myAnimation{
+            0%{ background-color: blue; left: 0%; top: 0%;}
+            33.33%{background-color: green;left:25%;top: 0%;}
+            66.66%{background-color: darkmagenta;left: 50%;top:0%;}
+            100%{background-color: red;left:100%;top:0%;}
+             0% {
+        transform: translateX(0) rotate(0deg);
+        border-radius: 0%;       /* square */
+        background-color: #3498db;
+      }
+      50% {
+        transform: translateX(200px) rotate(180deg);
+        border-radius: 50%;      /* circle */
+        background-color: #e74c3c;
+      }
+      100% {
+        transform: translateX(0) rotate(360deg);
+        border-radius: 0%;       /* back to square */
+        background-color: #3498db;
+      }
+    
+        }
+      .h{
+        background-color: black;   
+        size: 20%;    
+       text-align: center;
+       justify-content: center;
+      }
+      a:hover{
+        background-color: yellow;
+        font-size: 20px;
+        
+      }
+      .div6{
+        border-radius: 10px;
+      }
+      footer{
+        background-color: #3498db;
+        text-align: center;
+      }
+      .div9{
+        justify-content:stretch;
+      }
+      .dv{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: black;
+        text-align: center;
+        padding: 30px;
+        /* gap:150px; */
+        box-sizing: content-box;
+        border-radius:20px;
+      }
+      .dv:hover{
+      color: white;
+      }
+      a{
+        margin: 10px;
+       
+      }
+    </style>
+</head>
+<body>
+    <div id="div123"  class="m"><b style=color:yellow>InkOribit</b></div>
+    <div class="dv">
+        <a href="Collections.html" target="_blank" style=color:blue>Collections</a>
+        <a href="watson.html" target="_blank" style=color:blue>What's On</a>
+        <a href="visitus.html" target="_blank" style=color:blue>Visit Us</a>
+        <!-- <a href="stories.html" target="_blank" style=color:blue>Stories</a> -->
+        <a href="our books and stationary.html" target="_blank" style=color:blue>order</a>
+        <!-- Stories about our story -->
+    </div>
+   <hr> <div><h1 align="center" style=color:chartreuse>Welcome to InkOrbit</h1></div>
+    <hr><div><h4 align="center">We are very useful and helpful library<br>Which is helpful to everyone </h4></div>
+    <div class="div9"><p ><video src="library video.mp4" autoplay muted loop playsinline width="100%" height="500px"></video></p></div><hr>
+    <div class="div3" align="center"><h2><a href="Collections.html" target="_blank">Search Our Collections</a></h2>
+    <!-- <div class="div6"> -->
+    <!-- <img src="https://discovermonadnock.com/wp-content/uploads/2016/05/generic-library.jpg" height="150px" usemap="#search"></div></img> -->
+    
+    <!-- <map name="search">
+        <area shape="rect" coords="4,0,1422,800" alt="library iamge" href="file:///C:/Users/SHLOK/OneDrive/Desktop/html/InkOrbit/Collections.html" target="_blank"></area>
+    </map> -->
+    <!-- </div> -->
+    <h2><a href="visitus.html" target="_blank">Visit Us</a></h2>
+   <h2><a href="watson.html" target="_blank">What's On</a></h2>
+    <!-- <h2><a href="stories.html" target="_blank">Stories</a></h2> -->
+    <h2><a href="our books and stationary.html" target="_blank">order</a></h2>
+  </div>
+  <hr><footer> 
+    <p>© 2025 NIRMA UNIVERSITY online library project| made with ❤️ by nirma students</p>
+  </footer>
+</body>
+</html>

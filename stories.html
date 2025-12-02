@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories</title>
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e74ca;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .news-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+      padding: 15px;
+    }
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+    .news-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .news-card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .news-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0078d7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <header>📰 Today's Top News</header>
+  <div id="news-container">Loading news...</div>
+
+  <script>
+    const RSS_URL = "https://feeds.bbci.co.uk/news/rss.xml";
+
+    async function loadNews() {
+      try {
+        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}`);
+        const data = await res.json();
+
+        const container = document.getElementById('news-container');
+        container.innerHTML = "";
+
+        data.items.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'news-card';
+          card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>${item.description.slice(0, 150)}...</p>
+            <a href="${item.link}" target="_blank">Read More →</a>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        document.getElementById('news-container').innerHTML = "⚠️ Failed to load news.";
+        console.error(error);
+      }
+    }
+
+    loadNews();
+  </script>
+</body>
+</html>

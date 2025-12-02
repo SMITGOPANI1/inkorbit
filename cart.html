@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+    }
+    button {
+      width: 100%;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    #summary {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 340px;
+      text-align: left;
+    }
+    #pay {
+      display: none;
+      text-decoration: none;
+      color: white;
+      background: #007BFF;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+    #pay:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="Container">
+    <h2>Cart</h2>
+    <form id="signupForm">
+      <label>Name:</label>
+      <input type="text" id="name">
+      <div id="nameError" class="error"></div>
+
+      <label>Mobile No:</label>
+      <input type="text" id="mobile">
+      <div id="mobileError" class="error"></div>
+
+      <label>Gmail ID:</label>
+      <input type="text" id="gmail">
+      <div id="gmailError" class="error"></div>
+
+      <label>Address:</label>
+      <textarea id="address" rows="3" placeholder="Enter your full address"></textarea>
+      <div id="addressError" class="error"></div>
+
+      <label>Quantity:</label>
+      <input type="text" id="quantity">
+      <div id="quantityError" class="error"></div>
+
+      <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+  </div>
+
+  <div id="summary">
+    <h2>Order Summary</h2>
+    <p id="details"></p>
+  </div>
+
+  <a href="paymentsuccessful.html" target="_blank" id="pay"><h2>Pay</h2></a>
+
+  <script>
+    
+
+    function validateForm() {
+      
+
+      let name = document.getElementById("name").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let gmail = document.getElementById("gmail").value.trim();
+      let address = document.getElementById("address").value.trim();
+      let quantity = document.getElementById("quantity").value.trim();
+      let valid = true;
+
+      if (!/^[A-Za-z ]+$/.test(name)) {
+        document.getElementById("nameError").textContent = "Enter a valid name (letters only)";
+        valid = false;
+      }
+
+      if (!/^[0-9]{10}$/.test(mobile)) {
+        document.getElementById("mobileError").textContent = "Enter a valid 10-digit number";
+        valid = false;
+      }
+
+      if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(gmail)) {
+        document.getElementById("gmailError").textContent = "Enter a valid Gmail ID";
+        valid = false;
+      }
+
+      if (address.length < 10) {
+        document.getElementById("addressError").textContent = "Address must be at least 10 characters";
+        valid = false;
+      }
+
+      if (!/^[0-9]+$/.test(quantity) || quantity <= 0) {
+        document.getElementById("quantityError").textContent = "Enter a valid quantity (>0)";
+        valid = false;
+      }
+
+      if (valid) {
+        let total = 20 * parseInt(quantity);
+        document.getElementById("Container").style.display = "none";
+
+        document.getElementById("summary").style.display = "block";
+        document.getElementById("details").innerHTML = `
+          <strong>Name:</strong> ${name}<br>
+          <strong>Mobile:</strong> ${mobile}<br>
+          <strong>Gmail:</strong> ${gmail}<br>
+          <strong>Address:</strong> ${address}<br>
+          <strong>Quantity:</strong> ${quantity}<br>
+          <strong>Total Price:</strong> $${total}
+        `;
+
+        document.getElementById("pay").style.display = "inline-block";
+      }
+    }
+  </script>
+
+</body>
+</html>

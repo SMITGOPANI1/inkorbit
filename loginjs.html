@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Signup Form</h2>
+    <form id="signupForm">
+      <label>Name:</label>
+      <input type="text" id="name">
+      <div id="nameError" class="error"></div>
+
+      <label>Mobile No:</label>
+      <input type="text" id="mobile">
+      <div id="mobileError" class="error"></div>
+
+      <label>Gmail ID:</label>
+      <input type="text" id="gmail">
+      <div id="gmailError" class="error"></div>
+
+      <label>Password:</label>
+      <input type="text" id="password">
+      <div id="passwordError" class="error"></div>
+
+      <label>Confirm Password:</label>
+      <input type="text" id="confirmPassword">
+      <div id="confirmError" class="error"></div>
+
+     <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      
+      let name = document.getElementById("name").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let gmail = document.getElementById("gmail").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+
+
+      let valid = true;
+
+
+      if (!/^[A-Za-z ]+$/.test(name)) {
+        document.getElementById("nameError").textContent = "Enter valid name (letters only)";
+        valid = false;
+      }
+
+      
+      if (!/^[0-9]{10}$/.test(mobile)) {
+        document.getElementById("mobileError").textContent = "Enter valid 10-digit number";
+        valid = false;
+      }
+
+
+      if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(gmail)) {
+        document.getElementById("gmailError").textContent = "Enter valid Gmail ID";
+        valid = false;
+      }
+
+      
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+        valid = false;
+      }
+
+      
+      if (password !== confirmPassword) {
+        document.getElementById("confirmError").textContent = "Passwords do not match";
+        valid = false;
+      }
+
+      
+      if (valid) {
+        window.location.href = "Inkorbit.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
